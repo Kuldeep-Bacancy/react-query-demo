@@ -2,8 +2,8 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:8000"
 
-export const getTodos = async () => {
-  const res = await axios.get(`${BASE_URL}/todos`)
+export const getTodos = async (page=1) => {
+  const res = await axios.get(`${BASE_URL}/todos?_limit=2&_page=${page}`)
   if (res.status !== 200) {
     throw new Error('Something went wrong!')
   }

@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import { getTodos, deleteTodo } from '../services/todos';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 function TodoList() {
+  const [page, setPage] = useState(1);
   const queryClient = useQueryClient();
   const { isPending, isFetching, isError, data, error } = useQuery({
-    queryKey: ['todos'],
-    queryFn: getTodos,
+    queryKey: ['todos', page],
+    queryFn: () => getTodos(page)
   });
 
   const deleteTodoMutation = useMutation({
@@ -49,6 +50,8 @@ function TodoList() {
           </li>
         ))}
       </ul>
+      <button onClick={() => setPage(page - 1)} className='bg-yellow-500 text-white p-2 rounded-r' disabled={page <= 1}>Previous</button>
+      <button onClick={() => setPage(page + 1)} className='bg-blue-500 text-white p-2 rounded-r'>Next</button>
     </div>
   );
 }
