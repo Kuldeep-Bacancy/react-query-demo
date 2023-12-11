@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "content": "Learn React"
+    },
+    {
+      "id": 2,
+      "content": "Learn React Native"
+    },
+    {
+      "id": 3,
+      "content": "Learn Ruby on Rails"
+    },
+    {
+      "id": 4,
+      "content": "Learn Sidekiq"
+    }
+  ]
+}
